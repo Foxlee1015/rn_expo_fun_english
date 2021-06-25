@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import createDataContext from './createDataContext';
 import serverApi from '../api/server';
 import { navigate } from '../navigationRef';
@@ -34,7 +34,11 @@ const clearErrorMessage = dispatch => () => {
 
 const signup = dispatch => async ({ username, password, passwordConfirm }) => {
   try {
-    const response = await serverApi.post('/users', { username, password, password_confirm:passwordConfirm });
+    let form = new FormData() 
+    form.append('name', username) 
+    form.append('password',password)
+    form.append('password_confirm',passwordConfirm)
+    const response = await serverApi.post('/users', form);
     await AsyncStorage.setItem('token', response.data.token);
     dispatch({ type: 'signin', payload: response.data.token });
 
