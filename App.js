@@ -2,6 +2,7 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Provider as AuthProvider } from './src/context/AuthContext';
 import AccountScreen from './src/screens/AccountScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
@@ -9,11 +10,11 @@ import VerbCreateScreen from './src/screens/VerbCreateScreen';
 import VerbDetailScreen from './src/screens/VerbDetailScreen';
 import VerbListScreen from './src/screens/VerbListScreen';
 import { setNavigator } from './src/navigationRef';
-// import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import { FontAwesome } from '@expo/vector-icons';
 
 const verbListFlow = createStackNavigator({
-  VerbkList: VerbListScreen,
+  VerbList: VerbListScreen,
   VerbDetail: VerbDetailScreen
 });
 
@@ -23,11 +24,11 @@ verbListFlow.navigationOptions = {
 };
 
 const switchNavigator = createSwitchNavigator({
-  // ResolveAuth: ResolveAuthScreen,
-  // loginFlow: createStackNavigator({
-  //   Signup: SignupScreen,
-  //   Signin: SigninScreen
-  // }),
+  ResolveAuth: ResolveAuthScreen,
+  loginFlow: createStackNavigator({
+    Signup: SignupScreen,
+    Signin: SigninScreen
+  }),
   mainFlow: createBottomTabNavigator({
     verbListFlow,
     VerbCreate: VerbCreateScreen,
@@ -39,10 +40,12 @@ const App = createAppContainer(switchNavigator);
 
 export default () => {
   return (
-          <App
-            ref={navigator => {
-              setNavigator(navigator);
-            }}
-          />
+        <AuthProvider>
+        <App
+          ref={navigator => {
+            setNavigator(navigator);
+          }}
+        />
+      </AuthProvider>
   );
 };
