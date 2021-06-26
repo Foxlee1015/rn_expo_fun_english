@@ -1,5 +1,6 @@
 import createDataContext from './createDataContext';
 import ServerApi from '../api/server';
+import { navigate } from '../navigationRef';
 
 const verbReducer = (state, action) => {
   switch (action.type) {
@@ -15,7 +16,7 @@ const fetchVerbs = dispatch => async () => {
   dispatch({ type: 'fetch_verbs', payload: response.data.result });
 };
 const createVerb = dispatch => async ({present, past, participle, isIrregular, learnLevel} ) => {
-  await ServerApi.post('/verbs/', { params:{ present, past, participle, is_irregular:isIrregular, learn_level:learnLevel} });
+  await ServerApi.post('/verbs/', null, { params:{ present, past, participle, is_irregular:0, learn_level:learnLevel} });
   navigate('VerbList');
 };
 

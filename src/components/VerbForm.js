@@ -6,43 +6,38 @@ import { Picker } from '@react-native-picker/picker';
 
 import { Context as VerbContext } from "../context/VerbContext"
 import Spacer from './Spacer';
+import useTextInput from '../hooks/useTextInput';
 
 const VerbForm = () => {
   const { createVerb } = useContext(VerbContext);
+  const presentInput = useTextInput({label:"Verb Present"});
+  const pastInput = useTextInput({label:"Verb Past"});
+  const participleInput = useTextInput({label:"Verb Participle"});
 
-  const [published, setPublished] = React.useState(false);
-  const [present, setPresent] = useState('');
-  const [past, setPast] = useState('');
-  const [participle, setParticiple] = useState('');
+  const [published, setPublished] = useState(false);
   const [isIrregular, setIsIrregular] = useState(false);
   const [learnLevel, setLearnLevel] = useState(0);
+
+  const onSubmit = () => {
+    createVerb({
+      present: presentInput.value,
+      past: pastInput.value,
+      participle: participleInput.value, 
+      learnLevel, isIrregular
+    }) 
+  }
 
   return (
     <>
       <Spacer>
         <Spacer>
-          <Input
-            label="Verb Present"
-            value={present}
-            onChangeText={setPresent}
-            autoCorrect={false}
-          />
+          <Input {...presentInput} />
         </Spacer>
         <Spacer>
-          <Input
-            label="Verb Past"
-            value={past}
-            onChangeText={setPast}
-            autoCorrect={false}
-          />
+          <Input {...pastInput} />
         </Spacer>
         <Spacer>
-          <Input
-            label="Verb Participle"
-            value={participle}
-            onChangeText={setParticiple}
-            autoCorrect={false}
-          />
+          <Input {...participleInput} />
         </Spacer>
         <View style={styles.bottomContainer}>
           <View style={styles.switchLabelBox}>
@@ -80,7 +75,7 @@ const VerbForm = () => {
         
       </Spacer>
       <Spacer>
-          <Button title="Add" type="outline" onPress={()=>createVerb({present, past, participle, learnLevel, isIrregular})} />
+          <Button title="Add" type="outline" onPress={()=>onSubmit()} />
       </Spacer>
     </>
   );
