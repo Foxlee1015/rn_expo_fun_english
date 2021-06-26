@@ -8,25 +8,19 @@ import { ListItem } from 'react-native-elements';
 const VerbListScreen = ({ navigation }) => {
   const { state, fetchVerbs } = useContext(VerbContext);
 
-  useEffect(()=>{
-    console.log("state ", state)
-  },[state])
-
   return (
     <>
       <NavigationEvents onWillFocus={fetchVerbs} />
-      <Text>ㅋㅋㅋ</Text>
       <FlatList
         data={state}
         keyExtractor={item => item.present}
         renderItem={({ item }) => {
-          console.log('ii', item);
           return (
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('VerbDetail', { id: item.id })
               }
-            > <ListItem key={item.id} bottomDivider>
+            > <ListItem key={item.id} bottomDivider chevron>
               <ListItem.Content>
                 <ListItem.Title>{item.present}</ListItem.Title>
                 <ListItem.Subtitle>{item.past}</ListItem.Subtitle>
