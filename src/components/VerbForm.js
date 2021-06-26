@@ -1,10 +1,15 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Switch } from "react-native-elements";
-import { Input, Button, Text } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
+import { Picker } from '@react-native-picker/picker';
+
+import { Context as VerbContext } from "../context/VerbContext"
 import Spacer from './Spacer';
 
 const VerbForm = () => {
+  const { createVerb } = useContext(VerbContext);
+
   const [published, setPublished] = React.useState(false);
   const [present, setPresent] = useState('');
   const [past, setPast] = useState('');
@@ -59,10 +64,23 @@ const VerbForm = () => {
             <Button title="Public" type="outline" onPress={()=>setPublished(true)} />
           </View>
         </View>
+        <View style={styles.pickerBox}>
+          <Picker
+            selectedValue={learnLevel}
+            onValueChange={(itemValue, itemIndex) =>
+              setLearnLevel(itemValue)
+            }>
+            <Picker.Item label="Beginner" value={0} />
+            <Picker.Item label="Low Intermediate" value={1} />
+            <Picker.Item label="Middle Intermediate" value={2} />
+            <Picker.Item label="High Intermediate" value={3} />
+            <Picker.Item label="advanced" value={4} />
+          </Picker>
+        </View>
         
       </Spacer>
       <Spacer>
-          <Button title="Add" type="outline" onPress={()=>{}} />
+          <Button title="Add" type="outline" onPress={()=>createVerb({present, past, participle, learnLevel, isIrregular})} />
       </Spacer>
     </>
   );
@@ -75,6 +93,9 @@ const styles = StyleSheet.create({
   },
   switchLabelBox: {
     flexDirection: 'row',
+    alignItems: 'center'
+  },
+  pickerBox: {
     alignItems: 'center'
   }
 });

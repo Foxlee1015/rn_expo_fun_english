@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let url;
 if (__DEV__) {
-  url = 'http://3.35.138.162:16980/api/';
+  url = 'http://192.168.0.10:8002/api/';
 } else {
   url = 'http://3.35.138.162:16980/api/';
 }
