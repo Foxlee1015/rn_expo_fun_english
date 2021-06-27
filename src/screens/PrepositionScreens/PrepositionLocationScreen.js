@@ -6,37 +6,66 @@ import NavLink from '../../components/NavLink';
 
 const PrepositionLocationScreen = ({  }) => {
   const [prepositionText, setPrepositionText] = useState('');
+  const [transformValueX, setTransformValueX] = useState(0);
+  const [transformValueY, setTransformValueY] = useState(0);
   const onPressOn = () => {
+    setTransformValueX(10)
+    setTransformValueY(10)
     setPrepositionText('on')
     fadeIn()
   };
   const onPressIn = () => {
+    setTransformValueX(20)
+    setTransformValueY(20)
     setPrepositionText('in')
-    fadeOut()
+    fadeIn()
   };
   const onPressUnder = () => {
+    setTransformValueX(30)
+    setTransformValueY(50)
     setPrepositionText('under')
+    fadeIn()
   };
   const onPressFront = () => {
+    setTransformValueX(50)
+    setTransformValueY(30)
     setPrepositionText('front')
+    fadeIn()
   };
   const onPressBehind = () => {
+    setTransformValueX(50)
+    setTransformValueY(50)
     setPrepositionText('behind')
+    fadeIn()
   };
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   const fadeIn = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000
-    }).start();
+    Animated.sequence([
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true
+      }),
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 2000,
+        useNativeDriver: true
+      })
+    ]).start();
+    // Animated.timing(fadeAnim, {
+    //   toValue: 1,
+    //   duration: 5000,
+    //   useNativeDriver: true
+    // }).start();
   };
 
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 3000
+      duration: 3000,
+      useNativeDriver: true
     }).start();
   };
 
@@ -62,7 +91,23 @@ const PrepositionLocationScreen = ({  }) => {
         <Animated.View
           style={[
             styles.fadingContainer,
-            {opacity: fadeAnim}
+            {
+              opacity: fadeAnim,
+              transform: [
+                {
+                  translateX: fadeAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, transformValueX]
+                  })
+                },
+                {
+                  translateY: fadeAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, transformValueY]
+                  }),
+                }
+              ]
+            }
           ]}
         >
           <Text style={styles.fadingText}>{prepositionText}</Text>
@@ -108,6 +153,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center"
+  },
+  fadingContainer: {
+    height: 200
   },
   fadingText: {
     fontSize: 28
