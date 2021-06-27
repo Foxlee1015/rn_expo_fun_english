@@ -3,8 +3,6 @@ import { StyleSheet, FlatList, TouchableOpacity, View, Text } from 'react-native
 import { NavigationEvents } from 'react-navigation';
 import { Context as VerbContext } from '../context/VerbContext';
 
-import { ListItem } from 'react-native-elements';
-
 const VerbListScreen = ({ navigation }) => {
   const { state, fetchVerbs } = useContext(VerbContext);
 
@@ -16,11 +14,13 @@ const VerbListScreen = ({ navigation }) => {
         keyExtractor={item => item.present}
         renderItem={({ item }) => {
           return (
-            <View key={item.id}>
-              <Text onPress={() =>
-                navigation.navigate('VerbDetail', { _id: item.id })
-              }>{item.present}</Text>
-            </View>
+            <TouchableOpacity>
+              <View key={item.id}>
+                <Text onPress={() =>
+                  navigation.navigate('VerbDetail', { _id: item.id })
+                }>{item.present}</Text>
+              </View>
+            </TouchableOpacity>
           );
         }}
       />
