@@ -13,7 +13,7 @@ const VerbGamePlantScreen = ({ navigation }) => {
     <SafeAreaView forceInset={{ top: 'always' }}>  
       <NavigationEvents onWillFocus={fetchVerbs} />
       <View style={styles.container}>
-        <CanvasPlant />
+        <CanvasPlant value={state[1]} size={1}/>
       </View>
     </SafeAreaView>
     </>

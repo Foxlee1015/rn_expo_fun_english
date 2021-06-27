@@ -15,6 +15,8 @@ import VerbGamePlantScreen from './src/screens/VerbScreens/VerbGamePlantScreen';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen';
+import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen';
+import PrepositionTimeScreen from './src/screens/PrepositionScreens/PrepositionTimeScreen';
 import { FontAwesome } from '@expo/vector-icons';
 
 
@@ -30,7 +32,9 @@ verbListFlow.navigationOptions = {
 
 
 const PrepositionListFlow = createStackNavigator({
-  PrepositionList: PrepositionListScreen
+  PrepositionList: PrepositionListScreen,
+  PrepositionLocation: PrepositionLocationScreen,
+  PrepositionTime: PrepositionTimeScreen
 });
 
 PrepositionListFlow.navigationOptions = {

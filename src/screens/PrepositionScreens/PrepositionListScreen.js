@@ -10,8 +10,12 @@ const PrepositionListScreen = ({  }) => {
       <NavigationEvents onWillFocus={()=>{}} />
       <Text>PrepositionListScreen</Text>
       <NavLink
-        text="홈"
-        routeName="Main"
+        text="위치"
+        routeName="PrepositionLocation"
+      />
+      <NavLink
+        text="시간"
+        routeName="PrepositionTime"
       />
     </>
   );
