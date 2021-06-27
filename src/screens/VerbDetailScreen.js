@@ -35,7 +35,7 @@ const VerbDetailScreen = ({ navigation }) => {
             <AnimatedButton text={`${verb.present}2`} />
           </Spacer>
           <Spacer>
-            <AnimatedButton text={verb.present} _onPressRedirect={_onPressRedirect}/>
+            <AnimatedButton text={verb.present} _onPressRedirect={_onPressRedirect} isCorrect={true}/>
           </Spacer>
         </View>
       )}
