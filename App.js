@@ -7,16 +7,16 @@ import { Provider as VerbProvider } from './src/context/VerbContext';
 import AccountScreen from './src/screens/AccountScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
-import VerbCreateScreen from './src/screens/VerbCreateScreen';
-import VerbDetailScreen from './src/screens/VerbDetailScreen';
-import VerbListScreen from './src/screens/VerbListScreen';
+import MainScreen from './src/screens/MainScreen';
+import VerbCreateScreen from './src/screens/VerbScreens/VerbCreateScreen';
+import VerbDetailScreen from './src/screens/VerbScreens/VerbDetailScreen';
+import VerbListScreen from './src/screens/VerbScreens/VerbListScreen';
+import VerbGamePlantScreen from './src/screens/VerbScreens/VerbGamePlantScreen';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { Logs } from 'expo'
-
-Logs.enableExpoCliLogging()
 
 const verbListFlow = createStackNavigator({
   VerbList: VerbListScreen,
@@ -28,16 +28,33 @@ verbListFlow.navigationOptions = {
   tabBarIcon: <FontAwesome name="th-list" size={20} />
 };
 
+
+const PrepositionListFlow = createStackNavigator({
+  PrepositionList: PrepositionListScreen
+});
+
+PrepositionListFlow.navigationOptions = {
+  title: 'Prepositions',
+  tabBarIcon: <FontAwesome name="th-list" size={20} />
+};
+
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
+  mainFlow: createStackNavigator({
+    Main: MainScreen
+  }),
   loginFlow: createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen
   }),
-  mainFlow: createBottomTabNavigator({
-    verbListFlow,
+  verbFlow: createBottomTabNavigator({
+    verbListFlow,  
+    VerbGamePlant: VerbGamePlantScreen,
     VerbCreate: VerbCreateScreen,
     Account: AccountScreen
+  }),
+  PrepositionFlow: createBottomTabNavigator({
+    PrepositionListFlow,
   })
 });
 

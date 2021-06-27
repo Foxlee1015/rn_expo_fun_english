@@ -22,7 +22,7 @@ const tryLocalSignin = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
   if (token) {
     dispatch({ type: 'signin', payload: token });
-    navigate('VerbList');
+    navigate('Main');
   } else {
     navigate('Signup');
   }
@@ -42,7 +42,7 @@ const signup = dispatch => async ({ username, password, passwordConfirm }) => {
     await AsyncStorage.setItem('token', response.data.token);
     dispatch({ type: 'signin', payload: response.data.token });
 
-    navigate('VerbList');
+    navigate('Main');
   } catch (err) {
     dispatch({
       type: 'add_error',
@@ -56,7 +56,7 @@ const signin = dispatch => async ({ username, password }) => {
     let form = new FormData() 
     form.append('username', username) 
     form.append('password',password)
-    const response = await serverApi.post('/tokens', form);
+    const response = await serverApi.post('/tokens/', form);
     console.log(response);
     await AsyncStorage.setItem('token', response.result);
     dispatch({ type: 'signin', payload: response.result });

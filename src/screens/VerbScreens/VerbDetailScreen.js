@@ -1,8 +1,8 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
 import { StyleSheet, View } from 'react-native';
-import  { Context as VerbContext } from '../context/VerbContext';
-import AnimatedButton from "../components/AnimatedButton";
-import Spacer from "../components/Spacer";
+import  { Context as VerbContext } from '../../context/VerbContext';
+import AnimatedButton from "../../components/AnimatedButton";
+import Spacer from "../../components/Spacer";
 import { Text } from 'react-native-elements';
 
 const VerbDetailScreen = ({ navigation }) => {
@@ -49,7 +49,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
-
-
 
 export default VerbDetailScreen;

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { StyleSheet, FlatList, TouchableOpacity, View, Text } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
-import { Context as VerbContext } from '../context/VerbContext';
+import { Context as VerbContext } from '../../context/VerbContext';
 
 const VerbListScreen = ({ navigation }) => {
   const { state, fetchVerbs } = useContext(VerbContext);
@@ -29,7 +29,7 @@ const VerbListScreen = ({ navigation }) => {
 };
 
 VerbListScreen.navigationOptions = {
-  title: 'Verbs'
+  title: 'Verbs1'
 };
 
 const styles = StyleSheet.create({});

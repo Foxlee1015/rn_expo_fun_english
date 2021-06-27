@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView, withNavigationFocus } from 'react-navigation';
 import { FontAwesome } from '@expo/vector-icons';
-import VerbForm from '../components/VerbForm';
+import VerbForm from '../../components/VerbForm';
 
 const VerbCreateScreen = ({ }) => {
   return (
