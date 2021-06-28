@@ -1,28 +1,23 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasLoadingCircle = ({size, color, location={x:100,y:100}}) => {
+const CanvasBox = ({size, color, action}) => {
+  console.log('canvas props : ', size, color)
   
   const canvasRef = useRef(null)
-
-  const draw = (ctx, frameCount) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    ctx.fillStyle = color
-    ctx.beginPath()
-    ctx.arc(location.x, location.y, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI)
-    ctx.fill()
+  
+  const draw = (ctx) => {
+    ctx.beginPath();
+    ctx.rect(20, 20, 150, 100);
+    ctx.stroke();
   }
-
+  
   useEffect(() => {
-    
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
-    let frameCount = 0
     let animationFrameId
     
-    //Our draw came here
     const render = () => {
-      frameCount++
-      draw(context, frameCount)
+      draw(context)
       animationFrameId = window.requestAnimationFrame(render)
     }
     render()
@@ -30,9 +25,9 @@ const CanvasLoadingCircle = ({size, color, location={x:100,y:100}}) => {
     return () => {
       window.cancelAnimationFrame(animationFrameId)
     }
-  }, [draw, location])
+  }, [draw])
   
   return <canvas  style={{position:'absolute'}} ref={canvasRef} />
 }
 
-export default CanvasLoadingCircle
+export default CanvasBox

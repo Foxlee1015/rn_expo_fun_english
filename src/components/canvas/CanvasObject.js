@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasLoadingCircle = ({size, color, location={x:100,y:100}}) => {
+const CanvasObject = ({size, color, location={x:100,y:100}}) => {
   
   const canvasRef = useRef(null)
 
@@ -32,7 +32,7 @@ const CanvasLoadingCircle = ({size, color, location={x:100,y:100}}) => {
     }
   }, [draw, location])
   
-  return <canvas  style={{position:'absolute'}} ref={canvasRef} />
+  return <canvas style={{position:'absolute'}} ref={canvasRef} />
 }
 
-export default CanvasLoadingCircle
+export default CanvasObject
