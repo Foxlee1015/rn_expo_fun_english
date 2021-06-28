@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasBox = ({size, color, action}) => {
+const CanvasTable = ({size, color, action}) => {
+  console.log('canvas props : ', size, color)
   
   const canvasRef = useRef(null)
   
   const draw = (ctx) => {
     ctx.beginPath();
-    ctx.rect(0, 0, 300, 150);
+    ctx.rect(100, 50, 100, 50);
     ctx.stroke();
   }
   
@@ -29,4 +30,4 @@ const CanvasBox = ({size, color, action}) => {
   return <canvas  style={{position:'absolute'}} ref={canvasRef} />
 }
 
-export default CanvasBox
+export default CanvasTable

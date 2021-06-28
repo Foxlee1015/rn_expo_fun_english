@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-const CanvasObject = ({size, color, interval=5000, prevLocation={x:0,y:0}, curLocation={x:0,y:0}}) => {
+const CanvasObject = ({size, color='red', interval=5000, prevLocation={x:0,y:0}, curLocation={x:0,y:0}}) => {
   const canvasRef = useRef(null)
 
   const draw = (ctx, x, y, frameCount) => {
