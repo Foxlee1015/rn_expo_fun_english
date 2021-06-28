@@ -7,7 +7,7 @@ const CanvasBox = ({size, color, action}) => {
   
   const draw = (ctx) => {
     ctx.beginPath();
-    ctx.rect(0, 0, 150, 100);
+    ctx.rect(0, 0, 300, 150);
     ctx.stroke();
   }
   

@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import { StyleSheet, ScrollView, View, FlatList,  } from 'react-native';
 import { Button } from 'react-native-elements';
 import NavLink from '../../components/NavLink';
@@ -6,18 +6,20 @@ import CanvasBox from '../../components/canvas/CanvasBox';
 import CanvasObject from '../../components/canvas/CanvasObject';
 
 const PrepositionLocationScreen = ({  }) => {
-  const [objectLocation, setObjectLocation] = useState({x:0, y:0});
+  const [objectPrevLocation, setObjectPrevLocation] = useState({x:0, y:0});
+  const [objectCurLocation, setObjectCurLocation] = useState({x:0, y:0});
   
   const changeLocation = ({x,y}) => {
-    setObjectLocation({x,y})
+    setObjectPrevLocation({...objectCurLocation})
+    setObjectCurLocation({x,y})
   }
 
   const buttons = [
-    {title: "On", objectNextLocation: {x:50,y:50}},
-    {title: "In", objectNextLocation: {x:50,y:100}},
-    {title: "Under", objectNextLocation: {x:100,y:100}},
-    {title: "Front", objectNextLocation: {x:100,y:50}},
-    {title: "Behind", objectNextLocation: {x:25,y:25}}
+    {title: "On", objectNextLocation: {x:300,y:30}},
+    {title: "In", objectNextLocation: {x:50,y:70}},
+    {title: "Under", objectNextLocation: {x:100,y:30}},
+    {title: "Front", objectNextLocation: {x:140,y:100}},
+    {title: "Behind", objectNextLocation: {x:80,y:80}}
   ]
 
   return (
@@ -30,7 +32,7 @@ const PrepositionLocationScreen = ({  }) => {
         showsHorizontalScrollIndicator={false} 
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.canvasContainer}>
-          <CanvasObject location={objectLocation} />
+          <CanvasObject prevLocation={objectPrevLocation} curLocation={objectCurLocation} />
           <CanvasBox />
         </View>
         <FlatList
