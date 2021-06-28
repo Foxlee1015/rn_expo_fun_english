@@ -1,18 +1,23 @@
 import React, { useEffect, useRef, useState} from 'react';
-import { StyleSheet, ScrollView, View, FlatList,  } from 'react-native';
+import { StyleSheet, ScrollView, View, FlatList, Text  } from 'react-native';
 import { Button } from 'react-native-elements';
 import NavLink from '../../components/NavLink';
 import CanvasBox from '../../components/canvas/CanvasBox';
-import CanvasTable from '../../components/canvas/CanvasTable';
+import CanvasCube from '../../components/canvas/CanvasCube';
 import CanvasObject from '../../components/canvas/CanvasObject';
 
 const PrepositionLocationScreen = ({  }) => {
   const [objectPrevLocation, setObjectPrevLocation] = useState({x:0, y:0});
   const [objectCurLocation, setObjectCurLocation] = useState({x:0, y:0});
+  const [selectedPreposition, setSelectedPreposition] = useState("");
+  const [subject, setSubject] = useState("A ball");
+  const [verb, setVerb] = useState("is");
   
-  const changeLocation = ({x,y}) => {
+  const changeLocation = (item) => {
+    const {x,y} = item.objectNextLocation;
     setObjectPrevLocation({...objectCurLocation})
     setObjectCurLocation({x,y})
+    setSelectedPreposition(item.title.toLowerCase())
   }
 
   const buttons = [
@@ -32,9 +37,10 @@ const PrepositionLocationScreen = ({  }) => {
       />
       <ScrollView 
         showsHorizontalScrollIndicator={false} 
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.canvasContainer}>
-          <CanvasTable />
+        contentContainerStyle={styles.contentContainer}>    
+        <Text>{`${subject} ${verb} ${selectedPreposition} the cube.`}</Text>
+        <View style={styles.canvasContainer}>    
+          <CanvasCube />
           <CanvasObject prevLocation={objectPrevLocation} curLocation={objectCurLocation} />
           <CanvasBox />
         </View>
@@ -47,7 +53,7 @@ const PrepositionLocationScreen = ({  }) => {
                 <Button 
                   title={item.title} 
                   style={styles.button} 
-                  onPress={()=>changeLocation(item.objectNextLocation)} />
+                  onPress={()=>changeLocation(item)} />
                 );
           }}
         />

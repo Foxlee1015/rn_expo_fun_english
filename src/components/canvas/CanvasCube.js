@@ -1,16 +1,27 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasCube = ({size, color, action}) => {
+const CanvasCube = ({size="", color, location=[100,100]}) => {
   console.log('canvas props : ', size, color)
   
   const canvasRef = useRef(null)
   
   const draw = (ctx) => {
-    let x = 100;
-    let y = 100;
-    let wx = 50
-    let wy = 50
-    let h = 50
+    let multiply;
+    switch(size) {
+      case 'small':
+        multiply=0.5
+        break;
+      case 'large':
+        multiply=2
+        break;
+      default:
+        multiply=1
+        break;
+    }
+    let [x ,y] = location;
+    let wx = 50 * multiply
+    let wy = 50 * multiply
+    let h = 50 * multiply
 
 
     ctx.beginPath();
