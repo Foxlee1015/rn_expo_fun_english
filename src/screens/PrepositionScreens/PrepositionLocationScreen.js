@@ -1,41 +1,27 @@
 import React, { useRef, useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, ScrollView, View, Animated, FlatList,  } from 'react-native';
+import { StyleSheet, ScrollView, View, FlatList,  } from 'react-native';
 import { Button } from 'react-native-elements';
-import { NavigationEvents } from 'react-navigation';
 import NavLink from '../../components/NavLink';
 import CanvasBox from '../../components/canvas/CanvasBox';
 import CanvasObject from '../../components/canvas/CanvasObject';
 
 const PrepositionLocationScreen = ({  }) => {
-  const [location, setLocation] = useState({x:0, y:0});
-  const onPressOn = () => {
-    setLocation({x:50,y:50})
-  };
-  const onPressIn = () => {
-    setLocation({x:50,y:100})
-  };
-  const onPressUnder = () => {
-    setLocation({x:100,y:50})
-  };
-  const onPressFront = () => {
-    setLocation({x:100,y:100})
-  };
-  const onPressBehind = () => {
-    setLocation({x:50,y:50})
-  };
+  const [objectLocation, setObjectLocation] = useState({x:0, y:0});
+  
+  const changeLocation = ({x,y}) => {
+    setObjectLocation({x,y})
+  }
 
   const buttons = [
-    {title: "On", onPress: onPressOn},
-    {title: "In", onPress: onPressIn},
-    {title: "Under", onPress: onPressUnder},
-    {title: "Front", onPress: onPressFront},
-    {title: "Behind", onPress: onPressBehind}
+    {title: "On", objectNextLocation: {x:50,y:50}},
+    {title: "In", objectNextLocation: {x:50,y:100}},
+    {title: "Under", objectNextLocation: {x:100,y:100}},
+    {title: "Front", objectNextLocation: {x:100,y:50}},
+    {title: "Behind", objectNextLocation: {x:25,y:25}}
   ]
 
   return (
     <>
-      <NavigationEvents onWillFocus={()=>{}} />
-      <Text>PrepositionLocation</Text>
       <NavLink
         text="홈"
         routeName="Main"
@@ -43,10 +29,10 @@ const PrepositionLocationScreen = ({  }) => {
       <ScrollView 
         showsHorizontalScrollIndicator={false} 
         contentContainerStyle={styles.contentContainer}>
-          <View style={styles.canvasContainer}>
-            <CanvasObject location={location} />
-            <CanvasBox />
-          </View>
+        <View style={styles.canvasContainer}>
+          <CanvasObject location={objectLocation} />
+          <CanvasBox />
+        </View>
         <FlatList
           data={buttons}
           contentContainerStyle={styles.buttonWrapper}
@@ -56,7 +42,7 @@ const PrepositionLocationScreen = ({  }) => {
                 <Button 
                   title={item.title} 
                   style={styles.button} 
-                  onPress={item.onPress} />
+                  onPress={()=>changeLocation(item.objectNextLocation)} />
                 );
           }}
         />
@@ -66,7 +52,7 @@ const PrepositionLocationScreen = ({  }) => {
 };
 
 PrepositionLocationScreen.navigationOptions = {
-  title: 'PrepositionLocation'
+  title: '전치사(위치)'
 };
 
 const styles = StyleSheet.create({
