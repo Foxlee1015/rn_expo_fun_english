@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasCube = ({size="", color, location=[100,100]}) => {
-  console.log('canvas props : ', size, color)
+const CanvasCube = ({size="", color, location=[150,120]}) => {
   
   const canvasRef = useRef(null)
   
