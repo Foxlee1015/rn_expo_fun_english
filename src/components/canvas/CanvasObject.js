@@ -2,13 +2,13 @@ import React, { useRef, useState, useContext, useEffect } from 'react'
 import {Context as CanvasObjectContext} from '../../context/CanvasObjectContext';
 
 
-const moves = {
-  "on": {x:300,y:30},
-  "in": {x:50,y:70},
-  "under": {x:100,y:30},
-  "front": {x:140,y:100},
-  "behind": {x:80,y:80},
-  "inside": {x:150,y:75}
+const objectsProps = {
+  "on": {x:150, y:50, zIndex:100},
+  "in": {x:150, y:80, zIndex:1},
+  "under": {x:150, y:120, zIndex:1},
+  "front": {x:110, y:110, zIndex:100},
+  "behind": {x:200, y:70, zIndex:1},
+  "inside": {x:150, y:80, zIndex:1}
 }
 
 const currentLocation = {
@@ -17,14 +17,16 @@ const currentLocation = {
 }
 
 const CanvasObject = ({size, color='red', interval=5000}) => {
+  const [objectZIndex, setObjectZIndex] = useState(100);
   const canvasRef = useRef(null)
 
   const { state, updateCurrentLocation, updateNextLocation } = useContext(CanvasObjectContext);
 
   useEffect(()=>{
     if (state.target) {
-      console.log(state)
-      updateNextLocation(moves[state.target]);
+      const {x, y, zIndex} = objectsProps[state.target]
+      updateNextLocation({x,y});
+      setObjectZIndex(zIndex)
       updateCurrentLocation(currentLocation);
     }
   },[state.target])
@@ -33,7 +35,7 @@ const CanvasObject = ({size, color='red', interval=5000}) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     ctx.fillStyle = color
     ctx.beginPath()
-    ctx.arc(x, y, 20, 0, 2*Math.PI)
+    ctx.arc(x, y, 15, 0, 2*Math.PI)
     ctx.fill()
   }
 
@@ -57,7 +59,7 @@ const CanvasObject = ({size, color='red', interval=5000}) => {
   }, [draw, state.nextLocation])
 
     
-  return <canvas style={{position:'absolute'}} ref={canvasRef} />
+  return <canvas style={{position:'absolute', zIndex:objectZIndex}} ref={canvasRef} />
 }
 
 export default CanvasObject
