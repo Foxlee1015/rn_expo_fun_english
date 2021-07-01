@@ -1,28 +1,28 @@
 import React, { useRef, useEffect } from 'react'
 
-const CanvasBox = ({size, color, action, showGrid=false}) => {
-  
+
+const CanvasPaper = ({showGrid=false, width, height}) => {
   const canvasRef = useRef(null)
   
   const draw = (ctx) => {
     ctx.beginPath();
-    ctx.rect(0, 0, 300, 150);
+    ctx.rect(0, 0, width, height);
     ctx.stroke();
-
   }
+
   const drawGrid = (ctx) => {
-    for (var x = 0.5; x < 301; x += 10) {
-      context.moveTo(x, 0);
-      context.lineTo(x, 151);
+    for (let x = 0.5; x < (width+1); x += 10) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
     }
     
-    for (var y = 0.5; y < 150; y += 10) {
-      context.moveTo(0, y);
-      context.lineTo(301, y);
+    for (let y = 0.5; y < (height+1); y += 10) {
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
     }
       
-    context.strokeStyle = "#ddd";
-    context.stroke();
+    ctx.strokeStyle = "#ddd";
+    ctx.stroke();
   }
   
   useEffect(() => {
@@ -32,10 +32,7 @@ const CanvasBox = ({size, color, action, showGrid=false}) => {
     
     const render = () => {
       draw(context)
-
-      if (showGrid) {
-        drawGrid(context)
-      }
+      if (showGrid) drawGrid(context)
       animationFrameId = window.requestAnimationFrame(render)
     }
     render()
@@ -48,4 +45,5 @@ const CanvasBox = ({size, color, action, showGrid=false}) => {
   return <canvas  style={{position:'absolute'}} ref={canvasRef} />
 }
 
-export default CanvasBox
+
+export default CanvasPaper;

@@ -1,46 +1,44 @@
-import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Provider as AuthProvider } from './src/context/AuthContext';
-import { Provider as VerbProvider } from './src/context/VerbContext';
-import AccountScreen from './src/screens/AccountScreen';
-import SigninScreen from './src/screens/SigninScreen';
-import SignupScreen from './src/screens/SignupScreen';
-import MainScreen from './src/screens/MainScreen';
-import VerbCreateScreen from './src/screens/VerbScreens/VerbCreateScreen';
-import VerbDetailScreen from './src/screens/VerbScreens/VerbDetailScreen';
-import VerbListScreen from './src/screens/VerbScreens/VerbListScreen';
-import VerbGamePlantScreen from './src/screens/VerbScreens/VerbGamePlantScreen';
-import { setNavigator } from './src/navigationRef';
-import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen';
-import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen';
-import PrepositionTimeScreen from './src/screens/PrepositionScreens/PrepositionTimeScreen';
-import { FontAwesome } from '@expo/vector-icons';
+import React from 'react'
+import {createAppContainer, createSwitchNavigator} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation-stack'
+import {createBottomTabNavigator} from 'react-navigation-tabs'
+import {Provider as AuthProvider} from './src/context/AuthContext'
+import {Provider as VerbProvider} from './src/context/VerbContext'
+import AccountScreen from './src/screens/AccountScreen'
+import SigninScreen from './src/screens/SigninScreen'
+import SignupScreen from './src/screens/SignupScreen'
+import MainScreen from './src/screens/MainScreen'
+import VerbCreateScreen from './src/screens/VerbScreens/VerbCreateScreen'
+import VerbDetailScreen from './src/screens/VerbScreens/VerbDetailScreen'
+import VerbListScreen from './src/screens/VerbScreens/VerbListScreen'
+import VerbGamePlantScreen from './src/screens/VerbScreens/VerbGamePlantScreen'
+import {setNavigator} from './src/navigationRef'
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen'
+import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen'
+import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen'
+import PrepositionTimeScreen from './src/screens/PrepositionScreens/PrepositionTimeScreen'
+import {FontAwesome} from '@expo/vector-icons'
 
+import {NativeBaseProvider} from 'native-base'
 
 const verbListFlow = createStackNavigator({
   VerbList: VerbListScreen,
   VerbDetail: VerbDetailScreen
-});
+})
 
 verbListFlow.navigationOptions = {
   title: 'Verbs',
   tabBarIcon: <FontAwesome name="th-list" size={20} />
-};
-
+}
 
 const PrepositionListFlow = createStackNavigator({
-  PrepositionList: PrepositionListScreen,
-  PrepositionLocation: PrepositionLocationScreen,
-  PrepositionTime: PrepositionTimeScreen
-});
+  PrepositionList: PrepositionListScreen
+})
 
 PrepositionListFlow.navigationOptions = {
-  title: 'Prepositions',
+  title: '전치사',
   tabBarIcon: <FontAwesome name="th-list" size={20} />
-};
+}
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
@@ -52,28 +50,38 @@ const switchNavigator = createSwitchNavigator({
     Signup: SignupScreen
   }),
   verbFlow: createBottomTabNavigator({
-    verbListFlow,  
+    verbListFlow,
     VerbGamePlant: VerbGamePlantScreen,
     VerbCreate: VerbCreateScreen,
     Account: AccountScreen
   }),
   PrepositionFlow: createBottomTabNavigator({
     PrepositionListFlow,
+    PrepositionLocation: PrepositionLocationScreen,
+    PrepositionTime: PrepositionTimeScreen
   })
-});
+})
 
-const App = createAppContainer(switchNavigator);
+const App = createAppContainer(switchNavigator)
+
+const config = {
+  dependencies: {
+    'linear-gradient': require('expo-linear-gradient').LinearGradient
+  }
+}
 
 export default () => {
   return (
-        <AuthProvider>
-          <VerbProvider>
-            <App
-              ref={navigator => {
-                setNavigator(navigator);
-              }}
-            />
-          </VerbProvider>
+    <NativeBaseProvider config={config}>
+      <AuthProvider>
+        <VerbProvider>
+          <App
+            ref={navigator => {
+              setNavigator(navigator)
+            }}
+          />
+        </VerbProvider>
       </AuthProvider>
-  );
-};
+    </NativeBaseProvider>
+  )
+}

@@ -1,50 +1,87 @@
-import React, { useEffect, useRef, useState} from 'react';
-import { StyleSheet, ScrollView, View, FlatList, Text  } from 'react-native';
-import { Button } from 'react-native-elements';
-import NavLink from '../../components/NavLink';
-import CanvasScreen from '../../components/canvas/CanvasScreen';
-import { Provider as CanvasObjectProvider } from '../../context/CanvasObjectContext';
+import React, {useEffect, useState} from 'react'
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  FlatList,
+  Text,
+  SafeAreaView
+} from 'react-native'
+import {Button} from 'react-native-elements'
+import NavLink from '../../components/NavLink'
+import Spacer from '../../components/Spacer'
+import CanvasScreen from '../../components/canvas/CanvasScreen'
+import {Provider as CanvasObjectProvider} from '../../context/CanvasObjectContext'
 
+const PrepositionLocationScreen = ({}) => {
+  const [selectedPreposition, setSelectedPreposition] = useState('')
+  const [subjectCount, setSubjectCount] = useState(1)
+  const [subject, setSubject] = useState('A ball')
+  const [verb, setVerb] = useState('is')
 
-const PrepositionLocationScreen = ({  }) => {
-  const [selectedPreposition, setSelectedPreposition] = useState("");
-  const [subject, setSubject] = useState("A ball");
-  const [verb, setVerb] = useState("is");
-  
-  const changeLocation = (item) => {
+  const changeLocation = item => {
     setSelectedPreposition(item.toLowerCase())
   }
 
+  useEffect(() => {
+    if (subjectCount === 2) {
+      setSubject('Two balls')
+      setVerb('are')
+      setSelectedPreposition('')
+    }
+  }, [subjectCount])
+
   const prepositions = [
-    "On",
-    "In",
-    "Under",
-    "Front",
-    "Behind",
-    "Inside",
+    'On',
+    'In',
+    'Under',
+    'Front',
+    'Behind',
+    'Inside',
+    'At',
+    'By',
+    'Next',
+    'Beside',
+    'Below',
+    'Into',
+    'Towards'
   ]
 
   return (
     <>
-      <NavLink
-        text="홈"
-        routeName="Main"
-      />
-      <ScrollView 
-        showsHorizontalScrollIndicator={false} 
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.canvasContainer}> 
+      <NavLink text="홈" routeName="Main" />
+      <SafeAreaView style={styles.contentContainer}>
+        <Button
+          title="Next"
+          type="outline"
+          style={styles.button}
+          onPress={() => setSubjectCount(2)}
+        />
+        <Spacer>
+          <Text>{`Where ${verb} ${subject.toLowerCase()}?`}</Text>
+        </Spacer>
+        <View style={styles.canvasContainer}>
           <CanvasObjectProvider>
-            <CanvasScreen selectedPreposition={selectedPreposition}/>
+            <CanvasScreen
+              selectedPreposition={selectedPreposition}
+              subjectCount={subjectCount}
+            />
           </CanvasObjectProvider>
         </View>
         {selectedPreposition && (
-          <View style={styles.textContainer}>
-            <Text>{`${subject} ${verb} `}</Text>    
-            <Text style={styles.textBold}>{selectedPreposition}</Text>   
-            <Text>{` the cube`}</Text>
-          </View>
+          <Spacer>
+            <Text>
+              {`${subject} ${verb} `}
+              <Text style={styles.textBold}>{selectedPreposition}</Text>
+              {` the cube`}
+            </Text>
+          </Spacer>
         )}
+      </SafeAreaView>
+
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.contentContainer}>
         <FlatList
           data={prepositions}
           contentContainerStyle={styles.buttonWrapper}
@@ -52,36 +89,33 @@ const PrepositionLocationScreen = ({  }) => {
           numColumns={2}
           renderItem={({item}) => {
             return (
-                <Button 
-                  title={item}
-                  style={styles.button} 
-                  onPress={()=>changeLocation(item)} />
-                );
+              <Button
+                title={item}
+                style={styles.button}
+                onPress={() => changeLocation(item)}
+              />
+            )
           }}
         />
       </ScrollView>
     </>
-  );
-};
+  )
+}
 
 PrepositionLocationScreen.navigationOptions = {
   title: '전치사(위치)'
-};
+}
 
 const styles = StyleSheet.create({
   contentContainer: {
     alignItems: 'center'
-  },
-  textContainer: {
-    flexDirection: 'row'
   },
   textBold: {
     fontWeight: 700
   },
   canvasContainer: {
     width: 300,
-    height: 170,
-    marginBottom: 10,
+    height: 170
   },
   buttonWrapper: {
     width: 300,
@@ -90,12 +124,12 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 10,
-    width: 120,
+    width: 120
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   fadingContainer: {
     height: 200
@@ -103,6 +137,6 @@ const styles = StyleSheet.create({
   fadingText: {
     fontSize: 28
   }
-});
+})
 
-export default PrepositionLocationScreen;
+export default PrepositionLocationScreen

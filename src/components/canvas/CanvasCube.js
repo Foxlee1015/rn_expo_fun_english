@@ -32,7 +32,7 @@ const CanvasCube = ({size="", color, location=[150,120]}) => {
     ctx.lineTo(x - wx, y - h - wx * 0.5);
     ctx.lineTo(x, y - h * 1);
     ctx.closePath();
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
     ctx.fill();
     ctx.stroke();
 
@@ -43,7 +43,7 @@ const CanvasCube = ({size="", color, location=[150,120]}) => {
     ctx.lineTo(x + wy, y - h - wy * 0.5);
     ctx.lineTo(x, y - h * 1);
     ctx.closePath();
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
     ctx.fill();
     ctx.stroke();
 
@@ -54,7 +54,7 @@ const CanvasCube = ({size="", color, location=[150,120]}) => {
     ctx.lineTo(x - wx + wy, y - h - (wx * 0.5 + wy * 0.5));
     ctx.lineTo(x + wy, y - h - wy * 0.5);
     ctx.closePath();
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
     ctx.fill();
     ctx.stroke();
 
@@ -66,7 +66,7 @@ const CanvasCube = ({size="", color, location=[150,120]}) => {
     ctx.lineTo(x - wx + wy, y - (wx * 0.5 + wy * 0.5));
     ctx.lineTo(x + wy, y - wy * 0.5);
     ctx.closePath();
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
     ctx.fill();
     ctx.stroke();
     
@@ -74,7 +74,7 @@ const CanvasCube = ({size="", color, location=[150,120]}) => {
     ctx.beginPath();
     ctx.moveTo(x - wx + wy, y - h - (wx * 0.5 + wy * 0.5));
     ctx.lineTo(x - wx + wy, y - (wx * 0.5 + wy * 0.5));
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
     ctx.fill();
     ctx.stroke();
 
