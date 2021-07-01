@@ -16,6 +16,7 @@ import {setNavigator} from './src/navigationRef'
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen'
 import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen'
 import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen'
+import PrepositionDetailScreen from './src/screens/PrepositionScreens/PrepositionDetailScreen'
 import PrepositionTimeScreen from './src/screens/PrepositionScreens/PrepositionTimeScreen'
 import {FontAwesome} from '@expo/vector-icons'
 
@@ -32,7 +33,8 @@ verbListFlow.navigationOptions = {
 }
 
 const PrepositionListFlow = createStackNavigator({
-  PrepositionList: PrepositionListScreen
+  PrepositionList: PrepositionListScreen,
+  PrepositionDetail: PrepositionDetailScreen
 })
 
 PrepositionListFlow.navigationOptions = {

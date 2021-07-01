@@ -1,9 +1,7 @@
 import React from 'react'
 import {StyleSheet, Text} from 'react-native'
-import {NavigationEvents} from 'react-navigation'
-import NavLink from '../../components/NavLink'
-
-import {Box, FlatList, Center, Spacer} from 'native-base'
+import {Box, FlatList, Center, Button} from 'native-base'
+import {navigate} from '../../navigationRef'
 
 const prepositions = [
   {title: 'On', colors: ['rose.200', 'rose.800']},
@@ -21,39 +19,46 @@ const prepositions = [
   {title: 'Towards', colors: ['red.200', 'red.800']}
 ]
 
+const PrepositionBox = ({item}) => {
+  return (
+    <>
+      <Box
+        style={styles.box}
+        _text={{
+          fontSize: 'md',
+          fontWeight: 'bold',
+          color: 'white'
+        }}
+        rounded="md"
+        mx={2}
+        my={2}
+        bg={{
+          linearGradient: {
+            colors: item.colors,
+            start: [0, 0],
+            end: [1, 0]
+          }
+        }}>
+        <Button
+          style={{width: '100%', height: '100%'}}
+          variant="unstyled"
+          onPress={() => navigate('PrepositionDetail', {name: item.title})}>
+          {item.title}
+        </Button>
+      </Box>
+    </>
+  )
+}
+
 const PrepositionListScreen = ({}) => {
   return (
     <Center flex={1}>
-      {/* <NavLink text="위치" routeName="PrepositionLocation" />
-      <NavLink text="시간" routeName="PrepositionTime" /> */}
       <FlatList
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.flatlist}
         numColumns={2}
         data={prepositions}
-        renderItem={({item}) => (
-          <Box
-            _text={{
-              fontSize: 'md',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center'
-            }}
-            px={5}
-            py={2}
-            rounded="md"
-            mx={2}
-            my={2}
-            style={{minWidth: 150}}
-            bg={{
-              linearGradient: {
-                colors: item.colors,
-                start: [0, 0],
-                end: [1, 0]
-              }
-            }}>
-            {item.title}
-          </Box>
-        )}
+        renderItem={({item}) => <PrepositionBox item={item} />}
         keyExtractor={item => item.title}
       />
     </Center>
@@ -61,13 +66,18 @@ const PrepositionListScreen = ({}) => {
 }
 
 PrepositionListScreen.navigationOptions = {
-  title: 'PrepositionListScreen'
+  title: '전치사 공부'
 }
 
 const styles = StyleSheet.create({
   flatlist: {
     flexDirection: 'column',
     width: '100%'
+  },
+  box: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1
   }
 })
 
