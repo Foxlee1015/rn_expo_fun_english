@@ -4,19 +4,71 @@ import {Box, FlatList, Center, Button} from 'native-base'
 import {navigate} from '../../navigationRef'
 
 const prepositions = [
-  {title: 'On', colors: ['rose.200', 'rose.800']},
-  {title: 'In', colors: ['pink.200', 'pink.800']},
-  {title: 'Under', colors: ['warmGray.200', 'warmGray.800']},
-  {title: 'Front', colors: ['purple.200', 'purple.800']},
-  {title: 'Behind', colors: ['violet.200', 'violet.800']},
-  {title: 'Inside', colors: ['indigo.200', 'indigo.800']},
-  {title: 'At', colors: ['blue.200', 'blue.800']},
-  {title: 'By', colors: ['lightBlue.200', 'lightBlue.800']},
-  {title: 'Next', colors: ['cyan.200', 'cyan.800']},
-  {title: 'Beside', colors: ['teal.200', 'teal.800']},
-  {title: 'Below', colors: ['lime.200', 'lime.800']},
-  {title: 'Into', colors: ['amber.200', 'amber.800']},
-  {title: 'Towards', colors: ['red.200', 'red.800']}
+  {
+    title: 'On',
+    colors: ['rose.200', 'rose.800'],
+    contents: {time: null, place: 'yyy'}
+  },
+  {
+    title: 'In',
+    colors: ['pink.200', 'pink.800'],
+    contents: {time: 'xxx', place: null}
+  },
+  {
+    title: 'Under',
+    colors: ['warmGray.200', 'warmGray.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Front',
+    colors: ['purple.200', 'purple.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Behind',
+    colors: ['violet.200', 'violet.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Inside',
+    colors: ['indigo.200', 'indigo.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'At',
+    colors: ['blue.200', 'blue.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'By',
+    colors: ['lightBlue.200', 'lightBlue.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Next',
+    colors: ['cyan.200', 'cyan.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Beside',
+    colors: ['teal.200', 'teal.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Below',
+    colors: ['lime.200', 'lime.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Into',
+    colors: ['amber.200', 'amber.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  },
+  {
+    title: 'Towards',
+    colors: ['red.200', 'red.800'],
+    contents: {time: 'xxx', place: 'yyy'}
+  }
 ]
 
 const PrepositionBox = ({item}) => {
@@ -42,7 +94,7 @@ const PrepositionBox = ({item}) => {
         <Button
           style={{width: '100%', height: '100%'}}
           variant="unstyled"
-          onPress={() => navigate('PrepositionDetail', {name: item.title})}>
+          onPress={() => navigate('PrepositionDetail', {item})}>
           {item.title}
         </Button>
       </Box>

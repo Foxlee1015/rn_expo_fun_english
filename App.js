@@ -18,7 +18,7 @@ import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionL
 import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen'
 import PrepositionDetailScreen from './src/screens/PrepositionScreens/PrepositionDetailScreen'
 import PrepositionTimeScreen from './src/screens/PrepositionScreens/PrepositionTimeScreen'
-import {FontAwesome} from '@expo/vector-icons'
+import {FontAwesome} from '@expo/vector-icons' // https://icons.expo.fyi/
 
 import {NativeBaseProvider} from 'native-base'
 
@@ -39,7 +39,7 @@ const PrepositionListFlow = createStackNavigator({
 
 PrepositionListFlow.navigationOptions = {
   title: '전치사',
-  tabBarIcon: <FontAwesome name="th-list" size={20} />
+  tabBarIcon: <FontAwesome name="th-list" size={20} color="red" />
 }
 
 const switchNavigator = createSwitchNavigator({

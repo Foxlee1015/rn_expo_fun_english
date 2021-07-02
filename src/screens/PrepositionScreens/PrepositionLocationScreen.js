@@ -12,6 +12,7 @@ import NavLink from '../../components/NavLink'
 import Spacer from '../../components/Spacer'
 import CanvasScreen from '../../components/canvas/CanvasScreen'
 import {Provider as CanvasObjectProvider} from '../../context/CanvasObjectContext'
+import {Entypo} from '@expo/vector-icons'
 
 const PrepositionLocationScreen = ({}) => {
   const [selectedPreposition, setSelectedPreposition] = useState('')
@@ -103,7 +104,8 @@ const PrepositionLocationScreen = ({}) => {
 }
 
 PrepositionLocationScreen.navigationOptions = {
-  title: '전치사(위치)'
+  title: '전치사(위치)',
+  tabBarIcon: <Entypo name="game-controller" size={24} color="blue" />
 }
 
 const styles = StyleSheet.create({
