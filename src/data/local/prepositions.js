@@ -1,3 +1,4 @@
+export const prepositionTypes = ['time', 'place', 'number', 'advanced']
 export const prepositions = [
   {
     title: 'On',

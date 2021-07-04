@@ -9,13 +9,24 @@ import PrepositionAdvancedDetailCard from '../../components/preposition/Preposit
 import { Context as PrepositionContext } from "../../context/PrepositionContext"
 
 
+const Tab = ({ item }) => {
+  const { state, updateType } = useContext(PrepositionContext);
+    
+  return (
+    <Button
+      style={styles.TabButton}
+      title={item}
+      type={item === state ? 'solid' : 'clear'}
+      onPress={() => updateType(item)} />
+  )
+}
+
 const PrepositionDetailScreen = ({navigation}) => {
   const { state } = useContext(PrepositionContext);
   const preposition = navigation.getParam('item')
   const {number, time, place, advanced} = preposition.contents;
 
   const [tab, setTab] = useState([])
-  const [showTab, setShowTab] = useState(null)
 
   useEffect(() => {
     if (!navigation || !preposition) {
@@ -29,20 +40,10 @@ const PrepositionDetailScreen = ({navigation}) => {
           newTab.push(key) 
         }
       setTab([...newTab])
-      setShowTab(state)
       }
     }
   }, [])
 
-  const Tab = ({item}) => {
-    return (
-      <Button
-        style={styles.TabButton}
-        title={item}
-        type={item === showTab ? 'solid' : 'clear'}
-        onPress={() => setShowTab(item)} />
-    )
-  }
 
   return (
     <>
@@ -57,16 +58,16 @@ const PrepositionDetailScreen = ({navigation}) => {
             data={tab}
             contentContainerStyle={styles.TabContainer}
             renderItem={({item}) => (
-              <Tab item={item}/>
+              <Tab item={item} />
             )}
             keyExtractor={item => item}
           />
       </Spacer>
       <ScrollView showsVerticalScrollIndicator={false}>
-            {showTab === 'number' && <PrepositionDetailCard data={number} />}
-            {showTab === 'place' && <PrepositionDetailCard data={place} />}
-            {showTab === 'time' && <PrepositionDetailCard data={time} />}
-            {showTab === 'advanced' && <PrepositionAdvancedDetailCard data={advanced}/>}
+            {state === 'number' && <PrepositionDetailCard data={number} />}
+            {state === 'place' && <PrepositionDetailCard data={place} />}
+            {state === 'time' && <PrepositionDetailCard data={time} />}
+            {state === 'advanced' && <PrepositionAdvancedDetailCard data={advanced}/>}
       </ScrollView>
     </>
   )

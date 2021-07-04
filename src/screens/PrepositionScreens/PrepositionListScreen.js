@@ -5,19 +5,15 @@ import { FlatList, Center } from 'native-base'
 
 import Spacer from '../../components/Spacer'
 import PrepositionTitleBox from '../../components/PrepositionTitleBox'
-import {prepositions} from '../../data/local/prepositions'
+import {prepositions, prepositionTypes} from '../../data/local/prepositions'
 import { Context as PrepositionContext } from "../../context/PrepositionContext"
 
 
 const PrepositionListScreen = ({ }) => {
-  
   const { state, updateType } = useContext(PrepositionContext);
-  const prepositionTypes = ['time', 'place', 'number']
   const [filteredPrepositions, setFilteredPrepositions] = useState([]);
   
-
   useEffect(() => {
-    console.log(state)
     setFilteredPrepositions(prepositions.filter(preposition => {
       if (preposition.contents[state]) {
         return preposition
@@ -51,7 +47,7 @@ const PrepositionListScreen = ({ }) => {
           contentContainerStyle={styles.flatlist}
           numColumns={3}
           data={filteredPrepositions}
-          renderItem={({ item }) => <PrepositionTitleBox item={{...item}}/>}
+          renderItem={({ item }) => <PrepositionTitleBox item={item}/>}
           keyExtractor={item => item.title}
         />
       )}

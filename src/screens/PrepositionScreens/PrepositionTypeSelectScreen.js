@@ -1,7 +1,9 @@
 import React, {useContext} from 'react';
 import { StyleSheet} from 'react-native';
 import { Button } from 'react-native-elements';
+import { FlatList } from 'native-base'
 
+import { prepositionTypes} from '../../data/local/prepositions'
 import { navigate } from '../../navigationRef'
 import { Context as PrepositionContext } from "../../context/PrepositionContext"
 
@@ -14,25 +16,18 @@ const PrepositionTypeSelectScreen = ({ }) => {
   }
 
   return (
-    <>
-      <Button
-        title={"place"}
-        variant="unstyled"
-        onPress={() => _onPress('place')}
-      />
-      
-      <Button
-        title={"number"}
-        variant="unstyled"
-        onPress={() => _onPress('number')}
-      />
-      
-      <Button
-        title={"time"}
-        variant="unstyled"
-        onPress={() => _onPress('time')}
-      />
-    </>
+    <FlatList
+      showsVerticalScrollIndicator={false}
+      data={prepositionTypes}
+      renderItem={({item}) => (
+        <Button
+          title={item}
+          variant="unstyled"
+          onPress={() => _onPress(item)}
+        />
+      )}
+      keyExtractor={item => item}
+    />
   );
 };
 
