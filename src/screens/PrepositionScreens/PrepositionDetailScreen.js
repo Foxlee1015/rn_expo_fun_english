@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {StyleSheet, ScrollView, FlatList, Text} from 'react-native'
 import {Button} from 'react-native-elements';
 import { navigate } from '../../navigationRef'
@@ -6,9 +6,11 @@ import { navigate } from '../../navigationRef'
 import Spacer from '../../components/Spacer'
 import PrepositionDetailCard from '../../components/preposition/PrepositionDetailCard';
 import PrepositionAdvancedDetailCard from '../../components/preposition/PrepositionAdvancedDetailCard';
+import { Context as PrepositionContext } from "../../context/PrepositionContext"
 
 
 const PrepositionDetailScreen = ({navigation}) => {
+  const { state } = useContext(PrepositionContext);
   const preposition = navigation.getParam('item')
   const {number, time, place, advanced} = preposition.contents;
 
@@ -27,7 +29,7 @@ const PrepositionDetailScreen = ({navigation}) => {
           newTab.push(key) 
         }
       setTab([...newTab])
-      setShowTab(newTab[0])
+      setShowTab(state)
       }
     }
   }, [])
@@ -37,7 +39,7 @@ const PrepositionDetailScreen = ({navigation}) => {
       <Button
         style={styles.TabButton}
         title={item}
-        type="clear"
+        type={item === showTab ? 'solid' : 'clear'}
         onPress={() => setShowTab(item)} />
     )
   }

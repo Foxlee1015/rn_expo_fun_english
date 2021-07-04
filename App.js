@@ -4,6 +4,7 @@ import {createStackNavigator} from 'react-navigation-stack'
 import {createBottomTabNavigator} from 'react-navigation-tabs'
 import {Provider as AuthProvider} from './src/context/AuthContext'
 import {Provider as VerbProvider} from './src/context/VerbContext'
+import {Provider as PrepositionProvider} from './src/context/PrepositionContext'
 import AccountScreen from './src/screens/AccountScreen'
 import SigninScreen from './src/screens/SigninScreen'
 import SignupScreen from './src/screens/SignupScreen'
@@ -14,6 +15,7 @@ import VerbListScreen from './src/screens/VerbScreens/VerbListScreen'
 import VerbGamePlantScreen from './src/screens/VerbScreens/VerbGamePlantScreen'
 import {setNavigator} from './src/navigationRef'
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen'
+import PrepositionTypeSelectScreen from './src/screens/PrepositionScreens/PrepositionTypeSelectScreen'
 import PrepositionListScreen from './src/screens/PrepositionScreens/PrepositionListScreen'
 import PrepositionLocationScreen from './src/screens/PrepositionScreens/PrepositionLocationScreen'
 import PrepositionDetailScreen from './src/screens/PrepositionScreens/PrepositionDetailScreen'
@@ -33,6 +35,7 @@ verbListFlow.navigationOptions = {
 }
 
 const PrepositionListFlow = createStackNavigator({
+  PrepositionTypeSelect: PrepositionTypeSelectScreen,
   PrepositionList: PrepositionListScreen,
   PrepositionDetail: PrepositionDetailScreen
 })
@@ -76,6 +79,7 @@ export default () => {
   return (
     <NativeBaseProvider config={config}>
       <AuthProvider>
+        <PrepositionProvider>
         <VerbProvider>
           <App
             ref={navigator => {
@@ -83,6 +87,7 @@ export default () => {
             }}
           />
         </VerbProvider>
+        </PrepositionProvider>
       </AuthProvider>
     </NativeBaseProvider>
   )
