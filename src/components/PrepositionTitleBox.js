@@ -1,9 +1,11 @@
 import React from 'react'
 import {StyleSheet} from 'react-native'
 import {Box, Button} from 'native-base'
-import {navigate} from '../navigationRef'
+import { navigate } from '../navigationRef'
+import { genColors } from '../data/local/colorList'
 
-const PrepositionTitleBox = ({item}) => {
+const PrepositionTitleBox = ({ item }) => {
+  
   return (
     <Box
       style={styles.box}
@@ -13,7 +15,7 @@ const PrepositionTitleBox = ({item}) => {
       my={2}
       bg={{
         linearGradient: {
-          colors: item.colors,
+          colors: genColors(),
           start: [0, 0],
           end: [1, 0]
         }

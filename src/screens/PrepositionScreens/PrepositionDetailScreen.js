@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {StyleSheet, ScrollView, FlatList, Text} from 'react-native'
 import {Button} from 'react-native-elements';
-import {NavigationEvents} from 'react-navigation'
-import {navigate} from '../../navigationRef'
-import Spacer from '../../components/Spacer'
+import { navigate } from '../../navigationRef'
 
+import Spacer from '../../components/Spacer'
 import PrepositionDetailCard from '../../components/preposition/PrepositionDetailCard';
 import PrepositionAdvancedDetailCard from '../../components/preposition/PrepositionAdvancedDetailCard';
 
+
 const PrepositionDetailScreen = ({navigation}) => {
   const preposition = navigation.getParam('item')
+  const {number, time, place, advanced} = preposition.contents;
+
   const [tab, setTab] = useState([])
   const [showTab, setShowTab] = useState(null)
 
@@ -32,7 +34,11 @@ const PrepositionDetailScreen = ({navigation}) => {
 
   const Tab = ({item}) => {
     return (
-      <Button style={styles.TabButton} title={item} type="clear" onPress={()=>setShowTab(item)} />
+      <Button
+        style={styles.TabButton}
+        title={item}
+        type="clear"
+        onPress={() => setShowTab(item)} />
     )
   }
 
@@ -40,23 +46,25 @@ const PrepositionDetailScreen = ({navigation}) => {
     <>
       <Spacer margin={0} padding={10} color="green">
         <Text style={styles.HeadingText}>
-          {navigation.getParam('item').title}
+          {preposition.title}
         </Text>
       </Spacer>
-      <FlatList
-          showsVerticalScrollIndicator={false}
-          data={tab}
-          contentContainerStyle={styles.TabContainer}
-          renderItem={({item}) => (
-            <Tab item={item}/>
-          )}
-          keyExtractor={item => item}
-        />
+      <Spacer margin={0}>
+        <FlatList
+            showsVerticalScrollIndicator={false}
+            data={tab}
+            contentContainerStyle={styles.TabContainer}
+            renderItem={({item}) => (
+              <Tab item={item}/>
+            )}
+            keyExtractor={item => item}
+          />
+      </Spacer>
       <ScrollView showsVerticalScrollIndicator={false}>
-            {showTab === 'number' && <PrepositionDetailCard data={preposition.contents.number} />}
-            {showTab === 'place' && <PrepositionDetailCard data={preposition.contents.place} />}
-            {showTab === 'time' && <PrepositionDetailCard data={preposition.contents.time} />}
-            {showTab === 'advanced' && <PrepositionAdvancedDetailCard data={preposition.contents.advanced}/>}
+            {showTab === 'number' && <PrepositionDetailCard data={number} />}
+            {showTab === 'place' && <PrepositionDetailCard data={place} />}
+            {showTab === 'time' && <PrepositionDetailCard data={time} />}
+            {showTab === 'advanced' && <PrepositionAdvancedDetailCard data={advanced}/>}
       </ScrollView>
     </>
   )
@@ -76,11 +84,11 @@ const styles = StyleSheet.create({
   TabContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    height: 100
+    margin: 0
   },
   TabButton: {
     width: 100,
-    height: 100
+    height: 30
   },
   TabText: {
     fontWeight: 'bold',

@@ -124,7 +124,7 @@ export const prepositions = [
     }
   },
   {
-    title: 'Front x',
+    title: 'In front of',
     colors: ['purple.200', 'purple.800'],
     contents: {
       number: null,
@@ -155,19 +155,11 @@ export const prepositions = [
     }
   },
   {
-    title: 'Behind x',
+    title: 'Behind',
     colors: ['violet.200', 'violet.800'],
     contents: {
       number: null,
-      time: {
-        title: 'For specific dates and days.',
-        definition: [],
-        synonyms: [],
-        examples: [
-          'He was born on September 24th',
-          'I go to the gym on Mondays and Wednesdays'
-        ]
-      },
+      time: null,
       place: {
         title: 'Something is on the surface of something else',
         definition: [],
@@ -386,6 +378,471 @@ export const prepositions = [
   },
   {
     title: 'Toward',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Beneath',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Next to',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Across',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Through',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Along',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Between',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Among',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Out of',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'For',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'From',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Off',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'During',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'After',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Within',
+    colors: ['red.200', 'red.800'],
+    contents: {
+      number: null,
+      time: {
+        title: "Towards one o'clock",
+        definition: ['Near to a time'],
+        synonyms: [],
+        examples: [
+          'He was born on September 24th',
+          'I go to the gym on Mondays and Wednesdays'
+        ]
+      },
+      place: {
+        title: 'She stood up and walked towards him.',
+        definition: ['In the direction of someone or something'],
+        synonyms: [],
+        examples: [
+          'Your back was toward me.',
+          'Driving toward town.'
+        ]
+      },
+      advanced: [
+        {
+          title: 'As a contribution or help to',
+          examples: ['Money towards a new car.', 'The essays you do during term count towards your final grade.']
+        } 
+      ]
+    }
+  },
+  {
+    title: 'Untill',
     colors: ['red.200', 'red.800'],
     contents: {
       number: null,

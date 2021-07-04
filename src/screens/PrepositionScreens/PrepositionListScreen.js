@@ -5,14 +5,15 @@ import {FlatList, Center} from 'native-base'
 import PrepositionTitleBox from '../../components/PrepositionTitleBox'
 import {prepositions} from '../../data/local/prepositions'
 
-const PrepositionListScreen = ({}) => {
+const PrepositionListScreen = ({ }) => {
+  
   return (
     <Center flex={1}>
       {prepositions && (
         <FlatList
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.flatlist}
-          numColumns={2}
+          numColumns={3}
           data={prepositions}
           renderItem={({item}) => <PrepositionTitleBox item={item} />}
           keyExtractor={item => item.title}
