@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
-import {StyleSheet, ScrollView, FlatList, Text} from 'react-native'
-import {NavigationEvents} from 'react-navigation'
+import {StyleSheet, FlatList, Text} from 'react-native'
 import {Heading, useColorModeValue, Divider, Button} from 'native-base'
 import {navigate} from '../../navigationRef'
 import Spacer from '../../components/Spacer'

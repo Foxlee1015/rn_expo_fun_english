@@ -43,20 +43,20 @@ PrepositionListFlow.navigationOptions = {
 }
 
 const switchNavigator = createSwitchNavigator({
-  ResolveAuth: ResolveAuthScreen,
-  mainFlow: createStackNavigator({
-    Main: MainScreen
-  }),
-  loginFlow: createStackNavigator({
-    Signin: SigninScreen,
-    Signup: SignupScreen
-  }),
-  verbFlow: createBottomTabNavigator({
-    verbListFlow,
-    VerbGamePlant: VerbGamePlantScreen,
-    VerbCreate: VerbCreateScreen,
-    Account: AccountScreen
-  }),
+  // ResolveAuth: ResolveAuthScreen,
+  // mainFlow: createStackNavigator({
+  //   Main: MainScreen
+  // }),
+  // loginFlow: createStackNavigator({
+  //   Signin: SigninScreen,
+  //   Signup: SignupScreen
+  // }),
+  // verbFlow: createBottomTabNavigator({
+  //   verbListFlow,
+  //   VerbGamePlant: VerbGamePlantScreen,
+  //   VerbCreate: VerbCreateScreen,
+  //   Account: AccountScreen
+  // }),
   PrepositionFlow: createBottomTabNavigator({
     PrepositionListFlow,
     PrepositionLocation: PrepositionLocationScreen,

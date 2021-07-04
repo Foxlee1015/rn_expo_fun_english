@@ -6,6 +6,7 @@ import {navigate} from '../../navigationRef'
 import Spacer from '../../components/Spacer'
 
 import PrepositionDetailCard from '../../components/preposition/PrepositionDetailCard';
+import PrepositionAdvancedDetailCard from '../../components/preposition/PrepositionAdvancedDetailCard';
 
 const PrepositionDetailScreen = ({navigation}) => {
   const preposition = navigation.getParam('item')
@@ -52,10 +53,10 @@ const PrepositionDetailScreen = ({navigation}) => {
           keyExtractor={item => item}
         />
       <ScrollView showsVerticalScrollIndicator={false}>
-            {showTab === 'number' && <Text>nnn</Text>}
+            {showTab === 'number' && <PrepositionDetailCard data={preposition.contents.number} />}
             {showTab === 'place' && <PrepositionDetailCard data={preposition.contents.place} />}
             {showTab === 'time' && <PrepositionDetailCard data={preposition.contents.time} />}
-            {showTab === 'advanced' && <Text>aaa</Text>}
+            {showTab === 'advanced' && <PrepositionAdvancedDetailCard data={preposition.contents.advanced}/>}
       </ScrollView>
     </>
   )
